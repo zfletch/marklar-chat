@@ -7,6 +7,7 @@ sub startup {
   my $router = $self->routes;
 
   $router->get('/')->to('index#welcome');
+  $router->websocket('/marklar')->to('chat#marklar');
 }
 
 1;

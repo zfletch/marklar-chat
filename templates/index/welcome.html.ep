@@ -1,2 +1,20 @@
 % layout 'default';
 <h2><%= $msg %></h2>
+
+<script>
+  var ws = new WebSocket('<%= url_for('marklar')->to_abs %>');
+
+  ws.onmessage = function (event) {
+    document.getElementById("container").innerHTML += event.data + '<br/>';
+  };
+
+  ws.onopen = function (event) {
+    document.getElementById("send_message").addEventListener("click", function () {
+      ws.send(document.getElementById("input").value);
+      document.getElementById("input").value = "";
+    });
+  };
+</script>
+
+<textarea id="input"></textarea><button id="send_message">Send Message</button>
+<div id="container">
