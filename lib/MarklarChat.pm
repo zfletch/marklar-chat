@@ -1,18 +1,12 @@
 package MarklarChat;
 use Mojo::Base 'Mojolicious';
 
-# This method will run once at server start
 sub startup {
-  my $self = shift;
+  my ($self) = @_;
 
-  # Documentation browser under "/perldoc"
-  $self->plugin('PODRenderer');
+  my $router = $self->routes;
 
-  # Router
-  my $r = $self->routes;
-
-  # Normal route to controller
-  $r->get('/')->to('example#welcome');
+  $router->get('/')->to('index#welcome');
 }
 
 1;
