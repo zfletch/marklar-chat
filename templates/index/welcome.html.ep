@@ -4,11 +4,28 @@
 <script>
   var ws = new WebSocket('<%= url_for('marklar')->to_abs %>');
 
+  function pickColorFromUid(uid) {
+    var colors = ["Black", "Gray", "Silver", "White", "Yellow", "Lime", "Aqua", "Fuchsia", "Red", "Green", "Blue", "Purple", "Maroon", "Olive", "Navy", "Teal"]
+
+    return colors[parseInt("0x" + uid[0])];
+  }
+
   ws.onmessage = function (event) {
-    document.getElementById("container").innerHTML += event.data + '<br/>';
+    var json = JSON.parse(event.data);
+    var p = document.createElement("p"); 
+    var span = document.createElement("span")
+    var marklar = document.createTextNode("Marklar: "); 
+    var text = document.createTextNode(json.msg); 
+
+    span.setAttribute("style", "color:" + pickColorFromUid(json.uid));
+    span.appendChild(marklar);
+    p.appendChild(span);
+    p.appendChild(text);
+    document.getElementById("container").appendChild(p);
   };
 
   ws.onopen = function (event) {
+    document.getElementById("form").addEventListener("submit", function (e) { e.preventDefault(); })
     document.getElementById("send_message").addEventListener("click", function () {
       ws.send(document.getElementById("input").value);
       document.getElementById("input").value = "";
@@ -16,5 +33,5 @@
   };
 </script>
 
-<textarea id="input"></textarea><button id="send_message">Send Message</button>
+<form id="form"><input id="input"></input><button id="send_message" type="submit">Send Message</button></form>
 <div id="container">

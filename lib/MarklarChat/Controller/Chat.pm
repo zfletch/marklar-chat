@@ -1,6 +1,9 @@
 package MarklarChat::Controller::Chat;
 use Mojo::Base 'Mojolicious::Controller';
 
+use lib "lib";
+use Marklarizer qw(marklarize_text);
+
 my %connections;
 
 sub marklar {
@@ -13,11 +16,14 @@ sub marklar {
 
   $self->on(message => sub {
     my ($c, $msg) = @_;
-    $_->send($msg) for (values %connections);
+
+    $msg = Marklarizer::marklarize_text($msg);
+    $_->send({ json => { msg => $msg, uid => $key, } }) for (values %connections);
   });
 
   $self->on(finish => sub {
     my ($c, $code, $reason) = @_;
+
     delete $connections{$key};
   });
 }
