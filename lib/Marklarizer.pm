@@ -42,10 +42,14 @@ sub marklarize_word {
   }
 }
 
-sub marklarize_text {
-  my ($text) = @_;
+sub tagger {
+  new Lingua::EN::Tagger;
+}
 
-  my $tagger = new Lingua::EN::Tagger;
+sub marklarize_text {
+  my ($text, $tagger) = @_;
+
+  $tagger ||= tagger;
 
   return $text unless $tagger->_valid_text($text);
 
