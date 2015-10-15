@@ -74,5 +74,13 @@ sub marklarize_text {
   $marklarized_text;
 }
 
+sub readable_non_marklar {
+  my ($text, $tagger) = @_;
+
+  $tagger ||= tagger;
+
+  $tagger->get_readable($text);
+}
+
 1;
 

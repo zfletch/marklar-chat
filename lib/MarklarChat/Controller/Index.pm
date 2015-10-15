@@ -4,7 +4,7 @@ use Mojo::Base 'Mojolicious::Controller';
 sub welcome {
   my ($self) = @_;
 
-  $self->render(msg => 'Hello Marklar');
+  $self->render;
 }
 
 1;

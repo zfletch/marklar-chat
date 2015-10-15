@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head><title>Marklar</title></head>
+  <head>
+    <title>Marklar</title>
+    <link rel="stylesheet" href="/third_party/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/third_party/bootstrap-3.3.5-dist/css/bootstrap-theme.min.css">
+    <script src="/third_party/jquery-2.1.4.min.js"></script>
+    <script src="/third_party/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  </head>
   <body><%= content %></body>
 </html>
