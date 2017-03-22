@@ -6,7 +6,7 @@ module to identify all nouns (people, places, or things) and turn them into the 
 
 ## Required Perl modules
 
-* [Mojolicious](http://search.cpan.org/~sri/Mojolicious-6.23/lib/Mojolicious.pm)
+* [Mojolicious](http://search.cpan.org/~sri/Mojolicious-7.29/lib/Mojolicious.pm)
 * [Lingua::EN::Tagger](http://search.cpan.org/dist/Lingua-EN-Tagger/Tagger.pm)
 * [List::MoreUtils](http://search.cpan.org/~rehsack/List-MoreUtils-0.413/lib/List/MoreUtils.pm)
 
