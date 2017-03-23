@@ -45,7 +45,7 @@
 
   function createAndBindWebSocket () {
     if (!ws || ws.readyState === ws.CLOSED) {
-      ws = new WebSocket('<%= url_for('marklar')->to_abs %>');
+      ws = new WebSocket('<%= url_for('marklar')->to_abs->scheme('wss')->port(443) %>');
 
       ws.onmessage = function (event) {
         var json = JSON.parse(event.data);
