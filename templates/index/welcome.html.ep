@@ -56,7 +56,7 @@
         var marklar = document.createTextNode("Marklar: ");
         var text = document.createTextNode(json.msg);
 
-        console.log(event.data);
+        // console.log(event.data);
 
         span.setAttribute("style", "color:" + pickColorFromUid(json.uid));
         span.appendChild(marklar);
