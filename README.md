@@ -4,6 +4,8 @@ This is a chat server built with the [Mojolicious](http://mojolicio.us/) Perl mi
 It uses the [Lingua::EN::Tagger](http://search.cpan.org/dist/Lingua-EN-Tagger/Tagger.pm)
 module to identify all nouns (people, places, or things) and turn them into the word "marklar."
 
+[Try it out](https://marklar-chat.herokuapp.com/).
+
 ## Required Perl modules
 
 * [Mojolicious](http://search.cpan.org/~sri/Mojolicious-7.29/lib/Mojolicious.pm)
