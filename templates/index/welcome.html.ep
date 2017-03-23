@@ -1,7 +1,7 @@
 % layout 'default';
 
 <style>
-  html, body, .container-fluid {
+  html, body, .container {
      height: 100%;
   }
   .outer-container {
@@ -45,6 +45,8 @@
 
   function createAndBindWebSocket () {
     if (!ws || ws.readyState === ws.CLOSED) {
+      // TODO in development this should not use wss. With the Heroku setup, Mojolicious doesn't know it's HTTPS
+      // ws = new WebSocket('<%= url_for('marklar')->to_abs %>');
       ws = new WebSocket('<%= url_for('marklar')->to_abs->scheme('wss')->port(443) %>');
 
       ws.onmessage = function (event) {
@@ -83,7 +85,7 @@
   });
 </script>
 
-<div class="container-fluid">
+<div class="container">
   <div class="header clearfix">
     <h3 class="text-muted">Marklar Chat</h3>
   </div>
